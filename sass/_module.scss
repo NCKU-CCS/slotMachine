@@ -1,0 +1,64 @@
+%RWDscreen{
+	width:100%;
+	height:100%;
+}
+
+%position_relative{
+	position:relative;
+}
+
+%verticle_center{
+	display:flex;
+	align-items:center;
+}
+
+%all_center{
+	display:flex;
+	align-items:center ;
+	justify-content:center;
+}
+
+.display-block{
+	display:block !important ;
+}
+
+@mixin setSize($width , $height) {
+  width: $width ;
+  height: $height ;
+}
+
+@mixin addHeight($a , $b){
+  height: -webkit-calc(#{$a} + #{$b});
+  height:    -moz-calc(#{$a} + #{$b});
+  height:         calc(#{$a} + #{$b});
+}
+
+@mixin border-image($url , $slice , $border-width , $outset ,$repeat){
+	/* Safari and Chrome */
+	-webkit-border-image-source: url($url); 
+	-webkit-border-image-slice: $slice; 
+	-webkit-border-image-width: $border-width; 
+	-webkit-border-image-outset: $outset ;
+	-webkit-border-image-repeat: $repeat; 
+
+	/* Firefox */
+	-moz-border-image-source: url($url); 
+	-moz-border-image-slice: $slice; 
+	-moz-border-image-width: $border-width; 
+	-moz-border-image-outset: $outset ;
+	-moz-border-image-repeat: $repeat; 
+
+	/* CSS3 */
+	border-image-source: url($url); 
+	border-image-slice: $slice; 
+	border-image-width: $border-width; 
+	border-image-outset: $outset ;
+	border-image-repeat: $repeat; 
+}
+
+@mixin transition($property,$duration,$timing){
+	@include transition-property($property);
+  @include transition-duration($duration);
+  @include transition-timing-function($timing);
+}
+

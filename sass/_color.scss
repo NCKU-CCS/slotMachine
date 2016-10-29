@@ -1,0 +1,89 @@
+// ///////////
+// navBar
+// ///////////
+$li-color:#666666;
+$sub-li-color:#999999;
+
+// /////////// 
+// main-color
+// ///////////
+$green-color:#ceeae1;
+$yellow-color:#fdf5db;
+$blue-color: #292c77 ;
+$red-color: #F44336;
+$black-color:#333 ;
+$gray-color:#807676;
+$leftBar-color: rgba(41,44,119,0.6) ;
+
+$box-text-color:#4d4d4d ;
+$box-subText-color:#808080 ;
+$box-background:#f2f2f2 ;
+
+
+$bar-back1-color:#e6e6e6 ;
+$bar-back2-color:#cccccc ;
+// $bar-back2-color:#c5c0c0;
+$bar-back3-color:#b3b3b3 ;
+$bar-back4-color:#808080 ;
+$bar-back5-color:#666666 ;
+
+// ///////////////////
+// content
+$content-blue:#0c68b1 ;
+
+// ///////////////////
+// Color CSS
+// ///////////////////
+
+.red{
+	color:$red-color;
+}
+
+.yellow{
+	color:$yellow-color ;
+}
+
+.blue{
+	color:$blue-color ;
+}
+
+.content-blue{
+	color:$content-blue;
+}
+
+// //////////////////
+// font!!
+// /////////////////
+$fontSize-line-height:23px;
+$sub-font-size:15px;
+$font-size:18px;
+$font-large-size:21px ;
+$font-dlarge-size:25px ;
+$font-ddlarge-size:36px ;
+$font-dddlarge-size:42px ;
+
+$title-font:42px;
+$subTitle-font:38px;
+$mainTitleLeft: 8% ;
+
+// //////////////
+// font-transition
+// //////////////
+.font-bold{
+	font-weight:bold ;
+}
+
+.font-sub-to-big{
+	@extend .font-bold ;
+	font-size:$font-size;
+}
+
+.font-normal-to-big{
+	@extend .font-bold ;
+	font-size:$font-large-size;
+}
+
+.font-big-to-dbig{
+	@extend .font-bold ;
+	font-size:$font-dlarge-size ;
+}

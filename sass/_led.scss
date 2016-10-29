@@ -1,0 +1,19 @@
+.led {
+  width: 840px;
+  background-color: black;
+  height: 50px;
+}
+
+.light {
+  width: 5px;
+  height: 5px;
+  margin: 1px 1px;
+  text-align: center;
+  font-size: 15px;
+  float: left;
+  border-radius: 50%;
+}
+
+.off { background-color: #121212; }
+
+.on { background-color: $red-color; }

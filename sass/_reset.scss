@@ -1,0 +1,105 @@
+@import "compass/support";
+@import "compass/css3";
+
+
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+body,
+html,
+div,
+p,
+img,
+a,
+h1,
+h2,
+h3,
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+
+  /* img elements 圖片元素 */
+  border: medium none;
+  vertical-align: baseline;
+  background: transparent;
+  font-family: "Helvetica Neue",Helvetica,Arial,"Heiti TC","Microsoft JhengHei","微軟正黑體","Microsoft Yahei","微軟雅黑",sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  line-height: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+
+em {
+  font-style: normal;
+}
+
+
+/* 重置清單元素 */
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+/* 重置超連結元素 */
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+/* 重置圖片元素 */
+
+img {
+  vertical-align: middle;
+  border: 0px;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/********************
+ reset OVER!
+*********************/

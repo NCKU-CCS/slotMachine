@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html lan="en">
+
+<head>
+  {{> head }}
+  <link type="text/css" rel="stylesheet" href="{{path}}dist/css/slot_machine.css">
+</head>
+
+<body style="overflow-x:hidden;">
+
+  <div class = "draw_bot">
+    <div class ="slot_machine disabled">
+      <div class = "slot">
+        <div class = "slot_t slot_final" style = "color:#333;">0</div>
+      </div>
+      <div class = "slot">
+        <div class = "slot_t slot_final" style = "color:#333" >9</div>
+      </div>
+
+      <div class = "slot">
+        <div id = "slot1" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot2" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot3" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot4" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot5" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot6" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot7" class = "slot_t">0</div>
+      </div>
+      <div class = "slot">
+        <div id = "slot8" class = "slot_t">0</div>
+      </div>
+
+    </div>
+    <!-- Led -->
+    <div class = "section_led" >
+      {{> led}}
+    </div>
+  
+    <!-- Draw list -->
+    <div class = "list">
+      <h1><i>得獎名單</i></h1>
+      <div class = "list_box">
+      </div>
+    </div>
+
+    <div class = "btn btn_draw">開始</div>
+    <div class = "btn btn_reset">重來</div>
+
+    <!-- Sound control -->
+    <div id = "sound" class = ""></div>
+
+    <div class = "ground"></div>
+    <div class="murica"></div>
+    <div class="ballotwrap">
+      <div class="ballot">
+        <p id ="name">澤</p>
+        <p id ="phone">0913138802</p>
+      </div>
+    </div>
+    <section class="container">
+      <div id="cube">
+        <figure class="front">
+          <div class="eye"></div>
+          <div class="eye"></div>
+          <div class="mouth"></div>
+        </figure>
+        <figure class="back"></figure>
+        <figure class="right"></figure>
+        <figure class="left"></figure>
+        <figure class="top"><h1>PHONE</h1></figure>
+        <figure class="top2"><h1>LUCKY</h1></figure>
+        <figure class="top3"></figure>
+        <figure class="top4"></figure>
+      </div>
+    </section>
+  </div>
+
+  <audio id="bgm_opening" class = "bgm_select" autoplay loop>
+    <source src="{{path}}dist/audio/slot_opening.mp3" type="audio/mp3">
+  </audio>
+
+  <audio id="bgm_draw" class = "bgm_select" preload="preload" loop>
+    <source src="{{path}}dist/audio/slot_draw2.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- bgm_drop -->
+  <audio id="bgm_drop1" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop2" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop3" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop4" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop5" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop6" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop7" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+  <audio id="bgm_drop8" class = "bgm_select" preload="preload">
+    <source src="{{path}}dist/audio/slot_drop.mp3" type="audio/mp3">
+  </audio>
+
+</body>
+
+<!-- jquery -->
+<script src="{{path}}src/jquery-2.2.4.min.js"></script>
+<script type="text/javascript">
+  // Get Data
+  var items = [];
+  $.getJSON( "./src/drawList.json", function( data ) {
+    $.each( data, function(key ,value) {
+      items.push(value);
+    });
+  });
+
+  $("#bgm_opening").prop("volume",0.4);
+
+</script>
+<script src="{{path}}dist/js/led.js"></script>
+<script src="{{path}}dist/js/slot.js"></script>
+<script src="{{path}}dist/js/slotAudio.js"></script>
+<script src="{{path}}dist/js/slot_machine.js"></script>
+</html>
