@@ -3,19 +3,22 @@ var HEIGHT = 7;
 
 function clearLights(){
   var lightsOn = $('.on');
-  lightsOn.addClass('off');
-  lightsOn.removeClass('on');
+  lightsOn
+    .addClass('off')
+    .removeClass('on');
 }
 
 function setLight(row, col, state){
   var theLight = $('.'+row+'_'+col);
   
   if(theLight.hasClass('on') && !state){
-    theLight.removeClass('on');
-    theLight.addClass('off');
-  }else if(theLight.hasClass('off') && state){
-    theLight.removeClass('off');
-    theLight.addClass('on');
+    theLight
+      .removeClass('on')
+      .addClass('off');
+  } else if(theLight.hasClass('off') && state){
+    theLight
+      .removeClass('off')
+      .addClass('on');
   }
 }
 
@@ -23,14 +26,14 @@ function drawMessage(messageArray, leftPointer){
   var messageLength = messageArray.length;
   var totalScrollLength = SCROLLER_LENGTH + messageLength;
   
-  if(messageLength>0){
+  if(messageLength > 0){
     
-    for(var col=0;col<messageLength;col++){
-      for(var row=0;row<HEIGHT;row++){
+    for(var col = 0; col < messageLength; col++){
+      for(var row = 0; row < HEIGHT; row++){
         var offsetCol = leftPointer + col;
         
-        if(offsetCol<SCROLLER_LENGTH || offsetCol >= 0){
-          setLight(row,offsetCol,messageArray[col][row]);
+        if(offsetCol < SCROLLER_LENGTH || offsetCol >= 0){
+          setLight(row, offsetCol, messageArray[col][row]);
         }
         
       }
@@ -42,7 +45,7 @@ function drawMessage(messageArray, leftPointer){
 function textToLED(theWord){
   var theMessage = [];
   theWord = theWord.toUpperCase();
-  for(var i=0;i<theWord.length;i++){
+  for(var i = 0; i < theWord.length; i++){
     theMessage.push(charToLED(theWord.charAt(i)));
     theMessage.push(charToLED());
   }
@@ -256,14 +259,14 @@ function show() {
     requestAnimationFrame(show);
       clearLights();
     
-       if(leftPointer==furthestLeftPoint){
+       if(leftPointer === furthestLeftPoint){
           leftPointer = SCROLLER_LENGTH + 1;
        }
     
        drawMessage(myMessage, leftPointer);
        leftPointer--;     
       
-  }, 1000 / fps);
+  }, 1000/fps);
 }
 
 show();
