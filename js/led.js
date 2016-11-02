@@ -1,15 +1,58 @@
-var SCROLLER_LENGTH = 120;
-var HEIGHT = 7;
+var LED = {
+  create: create,
+  show: show,
+  setLight: setLight,
+  clearLights: clearLights,
+  _drawMessage: drawMessage,
+  _textToLED: textToLED,
+  _charToLED: charToLED
+};
+
+LED
+  .create('.led', 'Who  is  the  Lucky  Guy', 120, 0)
+  .show();
+
+function create(el, message, leftPointer, rightPointer, opt) {
+  opt = opt || {}
+  this.$ledDiv = $(el);
+  this.scrollerLength = opt.scrollerLength || 120;
+  this.height = opt.height || 7;
+  this.fps = opt.fps || 30;
+  this.leftPointer = leftPointer + 1;
+  this.rightPointer = rightPointer || 0;
+  this.myMessage = this._textToLED(message);
+  this.furthestLeftPoint = 0 - this.myMessage.length;
+
+  return this
+}
+
+function show() {
+  var self = this;
+
+  setTimeout(function() {
+    requestAnimationFrame(function() { self.show() });
+      self.clearLights();
+    
+       if(self.leftPointer === self.furthestLeftPoint) {
+          self.leftPointer = self.scrollerLength + 1;
+       }
+    
+       self._drawMessage();
+       self.leftPointer--;
+
+  }, 1000/self.fps);
+}
+
 
 function clearLights(){
-  var lightsOn = $('.on');
-  lightsOn
-    .addClass('off')
-    .removeClass('on');
+  this.$ledDiv
+    .children('.on')
+      .addClass('off')
+      .removeClass('on');
 }
 
 function setLight(row, col, state){
-  var theLight = $('.'+row+'_'+col);
+  var theLight = this.$ledDiv.children('.'+row+'_'+col);
   
   if(theLight.hasClass('on') && !state){
     theLight
@@ -22,23 +65,19 @@ function setLight(row, col, state){
   }
 }
 
-function drawMessage(messageArray, leftPointer){
-  var messageLength = messageArray.length;
-  var totalScrollLength = SCROLLER_LENGTH + messageLength;
-  
-  if(messageLength > 0){
-    
-    for(var col = 0; col < messageLength; col++){
-      for(var row = 0; row < HEIGHT; row++){
-        var offsetCol = leftPointer + col;
-        
-        if(offsetCol < SCROLLER_LENGTH || offsetCol >= 0){
-          setLight(row, offsetCol, messageArray[col][row]);
-        }
-        
+function drawMessage(){
+  var messageLength = this.myMessage.length;
+  var totalScrollLength = this.scrollerLength + messageLength;
+
+  for(var col = 0; col < messageLength; col++){
+    for(var row = 0; row < this.height; row++){
+      var offsetCol = this.leftPointer + col;
+      
+      if(offsetCol < this.scrollerLength || offsetCol >= 0){
+        this.setLight(row, offsetCol, this.myMessage[col][row]);
       }
+      
     }
-    
   }
 }
 
@@ -46,8 +85,8 @@ function textToLED(theWord){
   var theMessage = [];
   theWord = theWord.toUpperCase();
   for(var i = 0; i < theWord.length; i++){
-    theMessage.push(charToLED(theWord.charAt(i)));
-    theMessage.push(charToLED());
+    theMessage.push(this._charToLED(theWord.charAt(i)));
+    theMessage.push(this._charToLED());
   }
   
   var flatten = [];
@@ -246,27 +285,3 @@ function charToLED(theChar){
   }  
   return theLed;
 }
-
-var fps = 30;
-
-var myMessage = textToLED('Who  is  the  Lucky  Guy');
-var leftPointer = SCROLLER_LENGTH + 1;
-var rightPointer = 0;
-var furthestLeftPoint = 0 - myMessage.length;
-
-function show() {
-  setTimeout(function() {
-    requestAnimationFrame(show);
-      clearLights();
-    
-       if(leftPointer === furthestLeftPoint){
-          leftPointer = SCROLLER_LENGTH + 1;
-       }
-    
-       drawMessage(myMessage, leftPointer);
-       leftPointer--;     
-      
-  }, 1000/fps);
-}
-
-show();
