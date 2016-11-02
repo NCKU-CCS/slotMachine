@@ -52,6 +52,8 @@
 		var dealPhone = dealHiddenPhone(array[lucky].phone);
 		var dealName = dealHiddenName(array[lucky].name);
 
+		console.log("luckyNUm: "+ lucky + "  arrayLength: "+ length);
+
 		answerObj.luckyArray = dealPhone.array;
 		answerObj.phone = dealPhone.str;
 		answerObj.name = dealName;
