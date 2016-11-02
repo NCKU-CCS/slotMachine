@@ -153,7 +153,7 @@
 		stopAudio('bgm_opening');
 		playAudio('bgm_draw' , 0.3);
 	}
-
+  
 	function allStop(){
 		// background twinkle
 		$('.slot_t').addClass('draw_final_twinkle');
