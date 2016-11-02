@@ -22,10 +22,6 @@ var LED = {
   _reachEndLoop: reachEndLoop
 };
 
-LED
-  .create('.led', 'Who  is  the  Lucky  Guy', 120, 0)
-  .show();
-
 function create(el, message, leftPointer, rightPointer, opt) {
   opt = opt || {}
   this.$ledDiv = $(el);
@@ -36,9 +32,9 @@ function create(el, message, leftPointer, rightPointer, opt) {
   this.height = opt.height || 7;
   this.scrollerLength = opt.scrollerLength || 120;
   
-  this.leftPointer = leftPointer + 1;
+  this.deafultLeftPointer = leftPointer + 1;
+  this.leftPointer = this.defaultLeftPointer;
   this.rightPointer = rightPointer || 0;
-  this.deafultLeftPointer = this.leftPointer;
 
   this.myMessage = this._textToLED(message.toUpperCase());
 
@@ -51,16 +47,14 @@ function show() {
   var self = this;
   setTimeout(function() {
     requestAnimationFrame(function() { self.show() });
-      self._clearLights();
-    
       if(self._reachEndLoop()) 
         self.leftPointer = self.deafultLeftPointer;
     
+      self._clearLights();
       self._drawMessage();
       --self.leftPointer;
   }, self._speed);
 }
-
 
 function clearLights(){
   this.$ledDiv
@@ -73,7 +67,6 @@ function drawMessage(){
   var messageLength = this.myMessage.length;
   var totalScrollLength = this.scrollerLength + messageLength;
 
-  // TODO: need to simplify
   for(var col = 0; col < messageLength; col++){
     for(var row = 0; row < this.height; row++){
       var offsetCol = this.leftPointer + col;
@@ -87,23 +80,18 @@ function drawMessage(){
 
 function setLight(row, col, nextState){
   var lights = this.$ledDiv.children('.'+row+'_'+col);
-  
   // On --> Off
   if(lights.hasClass('on') && nextState === 0){
-  
     lights
       .removeClass('on')
       .addClass('off');
-
   // Off --> On
   } else if(lights.hasClass('off') && nextState === 1){
-    
     lights
       .removeClass('off')
       .addClass('on');
   }
 }
-
 
 function textToLED(text){
   var self = this;
@@ -114,7 +102,6 @@ function textToLED(text){
     ledArray.push(self._charToLED(char))
     ledArray.push(self._space);
   });
-  
   return [].concat.apply([], ledArray);
 }
 
