@@ -33,7 +33,7 @@ function create(el, message, leftPointer, rightPointer, opt) {
   this.scrollerLength = opt.scrollerLength || 120;
   
   this.deafultLeftPointer = leftPointer + 1;
-  this.leftPointer = this.defaultLeftPointer;
+  this.leftPointer = this.deafultLeftPointer;
   this.rightPointer = rightPointer || 0;
 
   this.myMessage = this._textToLED(message.toUpperCase());
@@ -47,7 +47,7 @@ function show() {
   var self = this;
   setTimeout(function() {
     requestAnimationFrame(function() { self.show() });
-      if(self._reachEndLoop()) 
+      if(self._reachEndLoop())
         self.leftPointer = self.deafultLeftPointer;
     
       self._clearLights();
@@ -111,7 +111,7 @@ function charToLED(char){
 }
 
 function reachEndLoop() {
-  return this.leftPointer === this.furthestLeftPoint;
+  return this.leftPointer === this._furthestLeftPoint;
 }
 
 function getCharDicionary() {
