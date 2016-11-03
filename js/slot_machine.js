@@ -1,5 +1,4 @@
 (function(window){
-	
   var draw_count = 0;
   var slot = [
     new Slot('#slot1', 20, 35 , 386),
@@ -17,6 +16,11 @@
     name: '',
     phone: ''
   }
+  
+  // Call LED from led.js
+  LED
+  .create('.led', 'Who  is  the  Lucky  Guy', 120, 0)
+  .show();
 
   //Listen to your custom event
   $('.btn_draw').click(function(){

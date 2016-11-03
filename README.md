@@ -23,6 +23,10 @@ $ ./bin/build -w
 - Use `gulp` to construct it .
 - `canner-core` is your main component which you also use in `handlebar.js`.
 
+### Usage of LED
+
+[LED.md](./LED.md)
+
 #### About GoGo Frontend 
 It helps you to construct and orginize your static code , quickly minify html , css , js , img.  
 
