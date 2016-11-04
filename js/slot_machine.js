@@ -55,9 +55,10 @@
     var length = array.length ;
     var lucky = Math.floor(Math.random()*length); // 0 ~ length-1
     var dealPhone = dealHiddenPhone(array[lucky].phone);
-    var dealName = dealHiddenName(array[lucky].name);
+    // var dealName = dealHiddenName(array[lucky].name);
+    var dealName = array[lucky].name;
 
-    console.log("luckyNUm: "+ lucky + "  arrayLength: "+ length);
+    console.log("luckyNUm: "+ lucky + "  arrayLength: "+ length + "\n name: " + array[lucky].name + "  phone: " + array[lucky].phone);
 
     answerObj.luckyArray = dealPhone.array;
     answerObj.phone = dealPhone.str;

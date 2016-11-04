@@ -9,7 +9,14 @@ A slot machine demo
 npm install -i
 ```
 
+#### Description
+
+A cute slot machine.
+Random draw a lucky guy with `phone` and `name` 
+
+
 ## Usage
+
 build sass , js 
 ```
 $ gulp
@@ -23,27 +30,19 @@ $ ./bin/build -w
 - Use `gulp` to construct it .
 - `canner-core` is your main component which you also use in `handlebar.js`.
 
-### Usage of LED
+#### Usage of LED
 
 [LED.md](./LED.md)
 
-#### About GoGo Frontend 
-It helps you to construct and orginize your static code , quickly minify html , css , js , img.  
 
-Use [gulp](http://gulpjs.com) and [canner-core](https://www.npmjs.com/package/canner-core)
-( The html's template is [hbs](http://handlebarsjs.com) )
-
-+ gulp
-+ gulp-compass
-+ gulp-concat
-+ gulp-imagemin
-+ gulp-minify-css
-+ gulp-plumber
-+ gulp-rename
-+ gulp-uglify
-+ gulp-clean-css
-+ canner-core
-+ minist
+#### Data form
+- [drawList.json](src/drawList.json)
+```
+[{
+	"name":" xxx ",
+	"phone":"091234567"
+}...] 
+```
 
 ## Developer
 
@@ -82,65 +81,25 @@ $ ./bin/build
 + -w : watch
 + -m : minify code
 
-## Intro every dirname
-
-### ./sass
-puts sass / scss code
-+ input : sass /
-+ output : dist / css /
-
-### ./js
-puts js code
-+ input : js /
-+ output : dist / js
-
-### ./dist 
-puts **minify's code (css , js , img , bgm)**
-
-### ./src
-put some library code ( js , css )
-ex: [normalize.css](https://necolas.github.io/normalize.css/)
-
-### ./lib
-puts **minify's library code**
-
-### ./layout
-puts **hbs template** ( include partial )
-
-### ./bin
-A **build file** to control hbs transforming.
-
-### ./route.js
-control the data to transform hbs's template
-- data : hbs's data
-- partials : partial.js
-- layout : input file
-- filename : output file   
-
-```
-var route = [
-{
-  data: {
-  path: './',
-  title: 'Hello guys',
-  first_word: 'It is a good template'
-  },
-  partials: './partial.js',
-  layout:  "./layout/index.hbs", 
-  filename: "./index.html" 
-}
-];
-module.exports = route;
-```
-
-### ./partial.js
-**partial hbs** &nbsp;&nbsp;&nbsp;&nbsp;ex: {{> head}}
-
-### ./gulpfile.js
-control gulp
-
-### ./config.rb
-a config.rb for [compass](http://compass-style.org)
-
 ## License
  © [NCKU-CCS]()
+
+---
+### About [GoGo Frontend ](GoGoFrontend.md)
+It helps you to construct and orginize your static code , quickly minify html , css , js , img.  
+
+Use [gulp](http://gulpjs.com) and [canner-core](https://www.npmjs.com/package/canner-core)
+( The html's template is [hbs](http://handlebarsjs.com) )
+
++ gulp
++ gulp-compass
++ gulp-concat
++ gulp-imagemin
++ gulp-minify-css
++ gulp-plumber
++ gulp-rename
++ gulp-uglify
++ gulp-clean-css
++ canner-core
++ minist
+
