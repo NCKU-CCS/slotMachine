@@ -1,5 +1,5 @@
 # GoGo Frontend
-- [github](https://github.com/TseHang/generator-okgogoo)
+- By [generator-okgogoo](https://github.com/TseHang/generator-okgogoo)
 
 It helps you to construct and orginize your static code , quickly minify html , css , js , img.  
 
@@ -79,4 +79,4 @@ control gulp
 a config.rb for [compass](http://compass-style.org)
 
 ## License
-MIT © TseHang
+MIT © [TseHang](https://github.com/TseHang)
