@@ -1,8 +1,12 @@
 # slot-machine
 
-A slot machine demo
+An cute slot machine ！！！
+
 
 ## Getting Started
+
+#### Prequirements
+- [npm](https://www.npmjs.com) ( we assume you have pre-installed [node.js](https://nodejs.org/en/) ).
 
 #### Install package
 ```
@@ -12,17 +16,26 @@ npm install -i
 #### Description
 
 A cute slot machine.
-Random draw a lucky guy with `phone` and `name` 
+**Randomly** draw a lucky guy by `phone` and `name` 
 
 
 ## Usage
 
-build sass , js 
+#### Input data
+- [drawList.json](src/drawList.json)
+```
+[{
+	"name":" xxx ",
+	"phone":"091234567"
+}...] 
+```
+
+#### Build sass , js 
 ```
 $ gulp
 ```
 
-build hbs to html, and watch
+#### Build hbs to html, and watch
 ```
 $ ./bin/build -w
 ```
@@ -34,15 +47,6 @@ $ ./bin/build -w
 
 [LED.md](./LED.md)
 
-
-#### Data form
-- [drawList.json](src/drawList.json)
-```
-[{
-	"name":" xxx ",
-	"phone":"091234567"
-}...] 
-```
 
 ## Developer
 
@@ -102,4 +106,5 @@ Use [gulp](http://gulpjs.com) and [canner-core](https://www.npmjs.com/package/ca
 + gulp-clean-css
 + canner-core
 + minist
+
 
