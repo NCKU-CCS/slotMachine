@@ -2,141 +2,130 @@
 @import 'color';
 @import 'module';
 @import 'led';
-
 // --
 $slot-height: 100px;
-$ballot-height:300px;
-$card-height: 20% ;
-$brown : #b0926d;
-$sans : 'Oswald', sans-serif;
-$white : #ffffff;
-$black : #231f20;
-$sans2 : 'Dosis';
+$ballot-height: 300px;
+$card-height: 20%;
+$brown: #b0926d;
+$sans: 'Oswald', sans-serif;
+$white: #ffffff;
+$black: #231f20;
+$sans2: 'Dosis';
 // --
-
 body {
-  background-color:$green-color;
+  background-color: $green-color;
 }
 
-@mixin gradient($a , $a_pa , $b , $b_pa , $c , $c_pa){
-  background: radial-gradient($a $a_pa, $b $b_pa , $c $c_pa);
-  -moz-background: radial-gradient($a $a_pa, $b $b_pa , $c $c_pa);
-  -o-background: radial-gradient($a $a_pa, $b $b_pa , $c $c_pa);
-  -webkit-background: radial-gradient($a $a_pa, $b $b_pa , $c $c_pa);
+@mixin gradient($a, $a_pa, $b, $b_pa, $c, $c_pa) {
+  background: radial-gradient($a $a_pa, $b $b_pa, $c $c_pa);
+  -moz-background: radial-gradient($a $a_pa, $b $b_pa, $c $c_pa);
+  -o-background: radial-gradient($a $a_pa, $b $b_pa, $c $c_pa);
+  -webkit-background: radial-gradient($a $a_pa, $b $b_pa, $c $c_pa);
 }
 
-%position_absolute{
-  position:absolute;
+%position_absolute {
+  position: absolute;
 }
 
-.disabled{
-  display:none !important;
+.disabled {
+  display: none !important;
 }
 
-
-#sound{
-  @include setSize(60px , 45px);
-  cursor:pointer;
+#sound {
+  @include setSize(60px, 45px);
+  cursor: pointer;
   margin: 0px 0px 20px $mainTitleLeft;
-
-  background-position: center center ;
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image:url(../img/soundOn.svg);
-}
-.sound_off{
-  background-image:url(../img/soundOff.svg) !important;
+  background-image: url(../img/soundOn.svg);
 }
 
-.section_led{
-  @extend %all_center ;
+.sound_off {
+  background-image: url(../img/soundOff.svg) !important;
+}
+
+.section_led {
+  @extend %all_center;
   height: 100px;
   margin: 7% auto 4%;
   background-color: #000;
   width: 85%;
   border: dashed 2px $yellow-color;
-  box-sizing:border-box;
+  box-sizing: border-box;
 }
 
-.slot_machine{
+.slot_machine {
   background-color: white;
-  display:flex ;
-  margin:7% auto 4% ; 
-  width:85% ;
+  display: flex;
+  margin: 7% auto 4%;
+  width: 85%;
   box-shadow: 0px 0px 9px 0px #333;
-
-  .slot{
-    @include setSize(10% ,$slot-height);
+  .slot {
+    @include setSize(10%, $slot-height);
     text-align: center;
     line-height: $slot-height;
     font-size: 100px;
-    overflow:hidden;
+    overflow: hidden;
     box-shadow: 0px 0px 2px 1px #333;
   }
-
-  .slot_t{
-    @include transition(all ,0.1s,ease-in);
-    position:relative;
-    top:0px;
+  .slot_t {
+    @include transition(all, 0.1s, ease-in);
+    position: relative;
+    top: 0px;
   }
-
-  .slot_final{
-    background-color: white ;
-    color: $red-color ;
-    // border: solid rgba(51, 51, 51, 0.4) 1px
+  .slot_final {
+    background-color: white;
+    color: $red-color; // border: solid rgba(51, 51, 51, 0.4) 1px
   }
-
-  .slot_move{
-    filter:blur(4px);
+  .slot_move {
+    filter: blur(4px);
   }
-
-  .draw_final_twinkle{
-    @include animation(twinkling 0.8s steps(2) 10 );
+  .draw_final_twinkle {
+    @include animation(twinkling 0.8s steps(2) 10);
   }
 }
 
-.led_text{
+.led_text {
   margin: 7% auto 4%;
   height: 100px;
 }
 
-.btn{
+.btn {
   @extend %all_center;
-  color:white ;
+  color: white;
   width: 10%;
   height: 30px;
   background-color: rgba(128, 118, 118, 0.6);
   cursor: pointer;
-  margin:20px auto 20px 8%;
+  margin: 20px auto 20px 8%;
   border-radius: 20px;
-  font-weight:bold;
+  font-weight: bold;
   z-index: 3;
-
-  @include transition(all , 0.1s ,ease-in);
-
-  &:hover{
-    background-color:$red-color;
-    transform:scale(1.1);
+  @include transition(all, 0.1s, ease-in);
+  &:hover {
+    background-color: $red-color;
+    transform: scale(1.1);
   }
 }
 
-.clicked{
-  background-color:$red-color;
-  transform:scale(1.3);
+.clicked {
+  background-color: $red-color;
+  transform: scale(1.3);
 }
 
 @include keyframes(twinkling) {
-  50%{
+  50% {
     background-color: $yellow-color;
   }
 }
 
-#name{
+#name {
   font-size: 27px;
   color: $box-text-color;
 }
 
-.list{
+.list {
   @extend %position_absolute;
   border-radius: 13px;
   width: 10%;
@@ -144,227 +133,246 @@ body {
   right: 9.5%;
   text-align: center;
   letter-spacing: 2px;
-  
-  h1{
+  h1 {
     line-height: 1.7;
     color: $blue-color;
-    cursor:pointer;
+    cursor: pointer;
     text-decoration: underline;
-    &:hover{
-      color:white;
-      background-color:$red-color;
+    &:hover {
+      color: white;
+      background-color: $red-color;
     }
-
   }
-
-  > .list_box{
-    line-height:1.3;
-    padding:0px;
-    height:0px;
+  > .list_box {
+    line-height: 1.3;
+    padding: 0px;
+    height: 0px;
     overflow: hidden;
-    @include transition(all,0.2s,ease-in);
+    @include transition(all, 0.2s, ease-in);
   }
-
-  &.list_show{
+  &.list_show {
     background-color: white;
-
-    h1{
-      color:white;
-      background-color:$red-color;
+    h1 {
+      color: white;
+      background-color: $red-color;
     }
-    >.list_box{
-      padding:5px;
-      height:auto;
+    > .list_box {
+      padding: 5px;
+      height: auto;
     }
   }
 }
 
-.draw_bot{
-  position:relative;
-  overflow:hidden;
-  width:100% ;
-  height:100% ;
-  background:$green-color,30%;
+.draw_bot {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: $green-color, 30%;
   transform-style: preserve-3d;
-  .ground{
+  .ground {
     @extend %position_absolute;
-    width:100%;
-    height:30%;
-    background:$blue-color;
-    bottom:0px;
+    width: 100%;
+    height: 30%;
+    background: $blue-color;
+    bottom: 0px;
   }
-  .ballotwrap{
+  .ballotwrap {
     @extend %position_absolute;
-    width:$ballot-height;
-    height:$ballot-height;
-    overflow:hidden;
-    left:50%;
-    top:13%;
-    transform:translateX(-50%);
-    z-index:2;
-    .ballot{
+    width: $ballot-height;
+    height: $ballot-height;
+    overflow: hidden;
+    left: 50%;
+    top: 13%;
+    transform: translateX(-50%);
+    z-index: 2;
+    .ballot {
       @extend %position_absolute;
       @extend %all_center;
-      flex-direction:column;
-      width:200px;
-      height:$ballot-height - 70px;
-      text-align:center;
-      background:$white;
+      flex-direction: column;
+      width: 200px;
+      height: $ballot-height - 70px;
+      text-align: center;
+      background: $white;
       color: rgba(77, 77, 77, 0.55);
-      left:50%;
-      transform:translateX(-50%) translateY(200%);
+      left: 50%;
+      transform: translateX(-50%) translateY(200%);
       font-size: 15px;
-      transition:1s ease-out;
-
-      border: solid 15px lighten($red-color,5%);
-      border-left-color: darken($green-color,5%);
-      border-right-color: darken($green-color,5%);
+      transition: 1s ease-out;
+      border: solid 15px lighten($red-color, 5%);
+      border-left-color: darken($green-color, 5%);
+      border-right-color: darken($green-color, 5%);
       box-sizing: border-box;
-      p{
-        line-height:1.5;
-        padding: 5px 10px;;
+      p {
+        line-height: 1.5;
+        padding: 5px 10px;
         letter-spacing: 3px;
       }
     }
-    
   }
   .container {
     width: 400px;
     height: 200px;
     position: absolute;
-    top:68%;
-    left:50%;
+    top: 68%;
+    left: 50%;
     perspective: 1000px;
-    transform:translateX(-50%) translateY(-50%);
-      #cube {
+    transform: translateX(-50%) translateY(-50%);
+    #cube {
       width: 100%;
       height: 100%;
       position: absolute;
       transform-style: preserve-3d;
-      transform:rotateX(-20deg);
-      box-shadow:0px 150px 150px 20px rgba(0,0,0,0.5);
-        .front  { transform: rotateY(   0deg ) translateZ( 200px ) translateX(-2px);
-                  background:$brown;
-                  width:400px;
-          .eye{
-            @extend %position_absolute;
-            width:40px;
-            height:40px;
-            background:darken($brown, 40%);
-            left:20%;
-            top:20%;
-            border-radius:100%;
-            &:nth-of-type(2){
-              left:auto;
-              right:20%;
-            }
-
-            &:nth-of-type(1){
-              @include animation(wink 3s ease-in-out infinite);   
-            }
-
+      transform: rotateX(-20deg);
+      box-shadow: 0px 150px 150px 20px rgba(0, 0, 0, 0.5);
+      .front {
+        transform: rotateY(0deg) translateZ(200px) translateX(-2px);
+        background: $brown;
+        width: 400px;
+        .eye {
+          @extend %position_absolute;
+          width: 40px;
+          height: 40px;
+          background: darken($brown, 40%);
+          left: 20%;
+          top: 20%;
+          border-radius: 100%;
+          &:nth-of-type(2) {
+            left: auto;
+            right: 20%;
           }
-          .mouth{
-            @extend %position_absolute;
-            width:100px;
-            height:20px;
-            background:darken($brown, 40%);
-            left:50%;
-            transform:translateX(-50%);
-            top:50%;
-            border-radius:40px 40px 40px 40px;
-            transition-delay:1s;
-            transition:0.2s ease-in-out;
+          &:nth-of-type(1) {
+            @include animation(wink 3s ease-in-out infinite);
           }
-                  
         }
-        .back   { transform: rotateX( 180deg ) translateZ( 180px ); background:darken($brown, 20%) }
-        .right  { transform: rotateY(  90deg ) translateZ( 200px );
-                  background:darken($brown, 15%);}
-        .left   { transform: rotateY( -90deg ) translateZ( 200px );
-                  background:darken($brown, 15%);}
-        .top    { transform: rotateX(  90deg ) translateZ( 100px ) translateY(222.5px) translateX(23px);
-                  background:darken($brown, 5%);
-                  height:140px;
-                  width:350px;
-                  }
-        .top2 { transform: rotateX(  90deg ) translateZ( 100px ) translateY(-23px) translateX(15px);
-                  background:darken($brown, 5%);
-                  height:160px;
-                  width:366px;
+        .mouth {
+          @extend %position_absolute;
+          width: 100px;
+          height: 20px;
+          background: darken($brown, 40%);
+          left: 50%;
+          transform: translateX(-50%);
+          top: 50%;
+          border-radius: 40px 40px 40px 40px;
+          transition-delay: 1s;
+          transition: 0.2s ease-in-out;
         }
-        .top3, .top4 { transform: rotateX(  90deg ) translateZ( 100px ) translateY(-23px) translateX(2px);
-                  background:darken($brown, 5%);
-                  height:190px;
-                  width:70px;
-        }
-        .top4{
-          transform: rotateX(  90deg ) translateZ( 100px ) translateY(-23px) translateX(323px);
-        }
-        figure {
+      }
+      .back {
+        transform: rotateX(180deg) translateZ(180px);
+        background: darken($brown, 20%);
+      }
+      .right {
+        transform: rotateY(90deg) translateZ(200px);
+        background: darken($brown, 15%);
+      }
+      .left {
+        transform: rotateY(-90deg) translateZ(200px);
+        background: darken($brown, 15%);
+      }
+      .top {
+        transform: rotateX(90deg) translateZ(100px) translateY(222.5px)
+          translateX(23px);
+        background: darken($brown, 5%);
+        height: 140px;
+        width: 350px;
+      }
+      .top2 {
+        transform: rotateX(90deg) translateZ(100px) translateY(-23px)
+          translateX(15px);
+        background: darken($brown, 5%);
+        height: 160px;
+        width: 366px;
+      }
+      .top3,
+      .top4 {
+        transform: rotateX(90deg) translateZ(100px) translateY(-23px)
+          translateX(2px);
+        background: darken($brown, 5%);
+        height: 190px;
+        width: 70px;
+      }
+      .top4 {
+        transform: rotateX(90deg) translateZ(100px) translateY(-23px)
+          translateX(323px);
+      }
+      figure {
         margin: 0;
         width: 396px;
         height: 196px;
         display: block;
         position: absolute;
-        z-index:3;
-          div{
-            z-index:3;
-          }
-          h1{
-            font-size:65px;
-            font-family:$sans;
-            color:$brown;
-            letter-spacing:0.25em;
-            @extend %position_absolute;
-            left:50%;
-            top:77%;
-            margin-left:7.5px;
-            transform:translateX(-50%) translateY(-100%);
-          }
+        z-index: 3;
+        div {
+          z-index: 3;
         }
+        h1 {
+          font-size: 65px;
+          font-family: $sans;
+          color: $brown;
+          letter-spacing: 0.25em;
+          @extend %position_absolute;
+          left: 50%;
+          top: 77%;
+          margin-left: 7.5px;
+          transform: translateX(-50%) translateY(-100%);
+        }
+      }
     }
   }
-  &.wink{
-    .murica{
-      transition:0.3s ease-in-out;
-      transition-delay:1s;
-      opacity:1;
+  &.wink {
+    .murica {
+      transition: 0.3s ease-in-out;
+      transition-delay: 1s;
+      opacity: 1;
     }
-    .ballotwrap{
-      .ballot{
+    .ballotwrap {
+      .ballot {
         // 3s 拿起來， 2s放下去
-        @include animation(drop 5s ease-in-out forwards);   
+        @include animation(drop 5s ease-in-out forwards);
       }
-      @include animation(toBig 2s ease-in-out 3s forwards);   
+      @include animation(toBig 2s ease-in-out 3s forwards);
     }
-    .container{
-      #cube{
-        .front{
-          .mouth{
-            transition-delay:0.8s;
-            height:60px;
-            border-radius:10px 10px 50px 50px;
+    .container {
+      #cube {
+        .front {
+          .mouth {
+            transition-delay: 0.8s;
+            height: 60px;
+            border-radius: 10px 10px 50px 50px;
           }
-          .eye{
-            &:nth-of-type(1){
-              @include animation(none);   
+          .eye {
+            &:nth-of-type(1) {
+              @include animation(none);
             }
           }
         }
       }
     }
   }
-
   #grad {
     position: relative;
     width: 100%;
     height: 100%;
   }
-  #grad:after, #grad:before {
+  #grad:after,
+  #grad:before {
     content: '';
     position: absolute;
-    background: linear-gradient(90deg, transparent 50%, black 50%, black), linear-gradient(82deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(67deg, transparent 50%, #000000 50%, #000000), linear-gradient(52deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(37deg, transparent 50%, #000000 50%, #000000), linear-gradient(22deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(7deg, transparent 50%, #000000 50%, #000000), linear-gradient(-8deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(-23deg, transparent 50%, #000000 50%, #000000), linear-gradient(-38deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(-53deg, transparent 50%, #000000 50%, #000000), linear-gradient(-68deg, transparent 50%, #12E0DB 50%, #12E0DB), linear-gradient(-83deg, transparent 50%, #000000 50%, #000000), linear-gradient(-90deg, transparent 50%, #12E0DB 50%, #12E0DB);
+    background: linear-gradient(90deg, transparent 50%, black 50%, black),
+      linear-gradient(82deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(67deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(52deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(37deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(22deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(7deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(-8deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(-23deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(-38deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(-53deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(-68deg, transparent 50%, #12e0db 50%, #12e0db),
+      linear-gradient(-83deg, transparent 50%, #000000 50%, #000000),
+      linear-gradient(-90deg, transparent 50%, #12e0db 50%, #12e0db);
     background-position: 0% 0%;
     background-size: 200% 100%;
     height: 100%;
@@ -375,33 +383,67 @@ body {
     transform: rotate(180deg);
   }
   .murica {
-    opacity:0;
-    transition:0.3s ease-in-out;
+    opacity: 0;
+    transition: 0.3s ease-in-out;
     position: absolute;
     width: 150vw;
     height: 150vw;
-    z-index:-1;
-    left:50%;
-    top:50%;
-    animation:rotating 20s linear infinite;
-      @keyframes rotating{
-        0%{
-          transform:translateX(-50%) translateY(-50%) rotate(0deg);
-        }
-        100%{
-          transform:translateX(-50%) translateY(-50%) rotate(360deg);
-        }
+    z-index: -1;
+    left: 50%;
+    top: 50%;
+    animation: rotating 20s linear infinite;
+    @keyframes rotating {
+      0% {
+        transform: translateX(-50%) translateY(-50%) rotate(0deg);
       }
+      100% {
+        transform: translateX(-50%) translateY(-50%) rotate(360deg);
+      }
+    }
   }
-  .murica:after, .murica:before {
+  .murica:after,
+  .murica:before {
     content: '';
     position: absolute;
-    background: linear-gradient(90deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(82deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(67deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(52deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(37deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(22deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(7deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(-8deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(-23deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(-38deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(-53deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(-68deg, transparent 50%, $yellow-color 50%, $yellow-color), linear-gradient(-83deg, transparent 50%, $green-color 50%, $green-color), linear-gradient(-90deg, transparent 50%, $yellow-color 50%, $yellow-color);
+    background: linear-gradient(
+        90deg,
+        transparent 50%,
+        $green-color 50%,
+        $green-color
+      ),
+      linear-gradient(82deg, transparent 50%, $yellow-color 50%, $yellow-color),
+      linear-gradient(67deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(52deg, transparent 50%, $yellow-color 50%, $yellow-color),
+      linear-gradient(37deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(22deg, transparent 50%, $yellow-color 50%, $yellow-color),
+      linear-gradient(7deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(-8deg, transparent 50%, $yellow-color 50%, $yellow-color),
+      linear-gradient(-23deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(
+        -38deg,
+        transparent 50%,
+        $yellow-color 50%,
+        $yellow-color
+      ),
+      linear-gradient(-53deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(
+        -68deg,
+        transparent 50%,
+        $yellow-color 50%,
+        $yellow-color
+      ),
+      linear-gradient(-83deg, transparent 50%, $green-color 50%, $green-color),
+      linear-gradient(
+        -90deg,
+        transparent 50%,
+        $yellow-color 50%,
+        $yellow-color
+      );
     background-position: 0% 0%;
     background-size: 200% 100%;
     height: 100%;
     width: 50%;
-    box-shadow:inset -5px 0px $yellow-color, inset 5px 0px $yellow-color;
+    box-shadow: inset -5px 0px $yellow-color, inset 5px 0px $yellow-color;
   }
   .murica:before {
     left: 50%;
@@ -409,46 +451,193 @@ body {
   }
 }
 
-@include keyframes(wink){
-  0%{
-    transform:scaleY(1) scaleX(1);
+@include keyframes(wink) {
+  0% {
+    transform: scaleY(1) scaleX(1);
   }
-  90%{
-    transform:scaleY(1) scaleX(1);
+  90% {
+    transform: scaleY(1) scaleX(1);
   }
-  95%{
-    transform:scaleY(0.2) scaleX(1.4);
+  95% {
+    transform: scaleY(0.2) scaleX(1.4);
   }
-  100%{
-    transform:scaleY(1) scaleX(1);
-  }
-}
-
-@include keyframes(drop){
-  0%{
-    transform:translateX(-50%) translateY(200%);
-  }
-  60%{
-    transform:translateX(-50%) translateY(0%);
-  }
-  100%{
-   transform:translateX(-50%) translateY(30%); 
-  }
-}
-@include keyframes(toBig){
-  100%{
-   transform:translateX(-50%) scale(1.6); 
+  100% {
+    transform: scaleY(1) scaleX(1);
   }
 }
 
-@media screen and (min-height: 800px){
-  .ballotwrap{
-    top:21% !important;
+@include keyframes(drop) {
+  0% {
+    transform: translateX(-50%) translateY(200%);
+  }
+  60% {
+    transform: translateX(-50%) translateY(0%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(30%);
   }
 }
 
-@media screen and (min-height: 900px){
-  .ballotwrap{
-    top:28% !important;
+@include keyframes(toBig) {
+  100% {
+    transform: translateX(-50%) scale(1.6);
+  }
+}
+.vue_app {
+  h3 {
+    margin: 1em 0px;
+    font-size: 1.3em;
+  }
+
+  .content_box {
+    text-align: center;
+  }
+
+  button {
+    width: auto;
+    margin: 20px 3%;
+  }
+
+  li {
+    margin: 0.3em 0 0.3em 0.5em;
+    list-style-type: none;
+  }
+}
+
+.tip {
+  &_background {
+    @include transition(opacity, .5s, linear);
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background-color: $black-color;
+    opacity: 0;
+    z-index: -1;
+
+    &.fade_open {
+      opacity: .6;
+      z-index: 0;
+    }
+  }
+
+  &_window {
+    @include transition(all, .3s, ease-in);
+    @include border-radius(10px);
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 30%;
+    padding: 0.5em 1em;
+    border: solid 1px $box-text-color;
+    background-color: $box-background;
+    z-index: 1;
+    transform-origin: bottom;
+    transform: translate(-50%, -80%) scale(0) ;
+
+    &.fade_open {
+      transform-origin: bottom;
+      transform: translate(-50%, -80%) scale(1) ;
+    }
+
+    &_button_box {
+      @extend %verticle_center;
+      justify-content: space-around;
+    }
+  }
+}
+
+.editDrawList {
+  &_panel {
+    @include border-radius(20px);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 35%;
+    transform: translate(-50%, -60%);
+    border: solid 5px $red-color;
+    background-color: $yellow-color;
+
+    padding: 1em 0.5em;
+    z-index: 5;
+  }
+
+  &_show_person {
+    text-align: left;
+    padding: 0.3em 1em 0.1em 30%;
+  }
+
+  &_button_box {
+    @extend %verticle_center;
+    justify-content: center;
+  }
+
+  &_add_person {
+    @include border-radius(20px);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 35%;
+    transform: translate(-50%, -60%);
+    border: solid 5px $blue-color;
+    background-color: $green-color;
+    text-align: center;
+
+    padding: 1em 5em;
+    z-index: 10;
+
+    > button {
+      margin: 20px auto;
+    }
+  }
+}
+
+.drawList_person {
+  @extend %verticle_center;
+
+  .btn_delete_person {
+    @include border-radius(100%);
+    position: relative;
+    width: 15px;
+    height: 15px;
+    border: solid 1px $black;
+
+    &::after {
+      position: absolute;
+      content: '';
+      width: 50%;
+      height: 1px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%);
+      background-color: $black;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+    .btn_delete_person {
+      border-color: white;
+      background-color: $red-color;
+      color: white;
+
+      &::after {
+        height: 2px;
+        background-color: white;
+      }
+    }
+  }
+}
+
+@media screen and (min-height: 800px) {
+  .ballotwrap {
+    top: 21% !important;
+  }
+}
+
+@media screen and (min-height: 900px) {
+  .ballotwrap {
+    top: 28% !important;
   }
 }
