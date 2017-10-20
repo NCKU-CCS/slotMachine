@@ -5,64 +5,63 @@ Vue.component('draw-list', {
   template:
     '<div class="drawList_person" @click="vm.deletePerson(person)" ><div class="btn_delete_person"></div><li>{{person.name}}</li></div>',
 })
+var vm = new Vue({
+  delimiters: ['${', '}'],
+  el: '#vue_app',
+  data: {
+    drawLists: [],
+    test: 'hello',
+    newPerson: {
+      name: '',
+      phone: '',
+    },
+  },
+  created: function() {
+    var ajaxInitialData = getInitialDrawLists()
+    this.drawLists = ajaxInitialData
+  },
+  methods: {
+    addNewPerson: function() {
+      var cellPhone = /^09[0-9]{8}$/
+      if (
+        this.newPerson.name.trim() === '' ||
+        !cellPhone.test(this.newPerson.phone)
+      ) {
+        alert('手機或名字填寫錯誤！')
+      } else {
+        this.drawLists.push({
+          uid: parseInt(Math.random() * 1000000000, 10),
+          name: this.newPerson.name,
+          phone: this.newPerson.phone,
+        })
+        this.newPerson.name = ''
+        $('.editDrawList_add_person').toggleClass('close')
+      }
+    },
+    deletePerson: function(person) {
+      var tmpDrawLists = this.drawLists
+      tmpDrawLists.forEach(function(value, index) {
+        if (person.uid === value.uid) {
+          console.log(person.uid, 'index: ' + index, value, this)
+          vm.drawLists.splice(index, 1)
+        }
+      })
+    },
+  },
+})
+
+function getInitialDrawLists() {
+  var _array = []
+  $.getJSON('./src/drawList.json', function(data) {
+    console.log(data, _array)
+    $.each(data, function(key, value) {
+      _array.push(value)
+    })
+  })
+  return _array
+}
 
 ;(function (wnidow) {
-  var vm = new Vue({
-    delimiters: ['${', '}'],
-    el: '#vue_app',
-    data: {
-      drawLists: [],
-      test: 'hello',
-      newPerson: {
-        name: '',
-        phone: '',
-      },
-    },
-    created: function() {
-      var ajaxInitialData = getInitialDrawLists()
-      this.drawLists = ajaxInitialData
-    },
-    methods: {
-      addNewPerson: function() {
-        var cellPhone = /^09[0-9]{8}$/
-        if (
-          this.newPerson.name.trim() === '' ||
-          !cellPhone.test(this.newPerson.phone)
-        ) {
-          alert('手機或名字填寫錯誤！')
-        } else {
-          this.drawLists.push({
-            uid: parseInt(Math.random() * 1000000000, 10),
-            name: this.newPerson.name,
-            phone: this.newPerson.phone,
-          })
-          this.newPerson.name = ''
-          $('.editDrawList_add_person').toggleClass('close')
-        }
-      },
-      deletePerson: function(person) {
-        var tmpDrawLists = this.drawLists
-        tmpDrawLists.forEach(function(value, index) {
-          if (person.uid === value.uid) {
-            console.log(person.uid, index, value, this)
-            vm.drawLists.splice(index, 1)
-          }
-        })
-      },
-    },
-  })
-  
-  function getInitialDrawLists() {
-    var _array = []
-    $.getJSON('../src/drawList.json', function(data) {
-      console.log(data, _array)
-      $.each(data, function(key, value) {
-        _array.push(value)
-      })
-    })
-    return _array
-  }
-  
   $('.btn_start').click(function() {
     var drawListData = vm.drawLists
     $('.tip_background, .tip_window').removeClass('fade_open')
